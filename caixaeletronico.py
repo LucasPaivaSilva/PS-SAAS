@@ -34,6 +34,9 @@ class CaixaEletronico:
             VetorDeNotas = self.Notas.copy()
             CopiaDeValorASerSacado = ValorASerSacado
             SaqueInvalido = False
+            # Caso o valor solicitado tenha um resto diferente do que 0, não será possível distribui o mesmo com as notas no caixa 
+            if ValorASerSacado%10 != 0:
+                SaqueInvalido = True
             # Começa a distribuição das notas de cima para baixo, o motivo disso está explicado no readme.md
             for ValorDaNota in reversed(VetorDeNotas):
                 # Caso o valor a ser sacado seja maior que a nota sendo destribuída, passa para a próxima nota
