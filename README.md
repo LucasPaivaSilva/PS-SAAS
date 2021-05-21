@@ -30,5 +30,3 @@ essas tem maior demanda e saída.
 
 
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
