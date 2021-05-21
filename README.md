@@ -19,7 +19,7 @@ essas tem maior demanda e saída.
                     continue
                 # Verifica se ainda existem notas a serem distribuidas e se o valor já não foi alcançado
                 while VetorDeNotas[ValorDaNota] != 0 and ValorASerSacado > 0:
-                    # Invalida o saque no caso das notas não poderem completar a quantia solicitada 
+                    # Passa para próxima nota ou invalida o saque no caso das notas não poderem completar a quantia solicitada  
                     if ValorASerSacado - ValorDaNota < 0:
                             if ValorDaNota > ValorASerSacado:
                                 break
