@@ -19,9 +19,9 @@ O código atua como um subsistema responsável por contabilizar e liberar as not
                     continue
                 # Verifica se ainda existem notas a serem distribuidas e se o valor já não foi alcançado
                 while VetorDeNotas[ValorDaNota] != 0 and ValorASerSacado > 0:
-                    # Passa para próxima nota ou invalida o saque no caso das notas não poderem completar a quantia solicitada  
+                    # Passa para próxima nota ou invalida o saque no caso das notas não poderem completar a quantia solicitada 
                     if ValorASerSacado - ValorDaNota < 0:
-                            if ValorDaNota > ValorASerSacado:
+                            if ValorASerSacado%ValorDaNota !=0:
                                 break
                             else:
                                 SaqueInvalido = True
