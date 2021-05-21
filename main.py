@@ -10,7 +10,7 @@ from caixaeletronico import CaixaEletronico
 # Criação do Caixa01
 Caixa01 = CaixaEletronico()
 
-# Saldo ficitio para testar o sistema
+# Saldo para realizar testes 
 SaldoEmConta = 1000
 
 # Variável de controle do loop do menu
@@ -29,8 +29,9 @@ while ControleDoMenu:
         # Verifica se o usuário possúi o valor a ser sacado na connta 
         if ValorASerSacado>SaldoEmConta:
             print("Você não possuí saldo suficiente em conta para realizar esse saque!")
-            continue
-        Caixa01.sacarNotas(ValorASerSacado)
+        else:
+            if Caixa01.sacarNotas(ValorASerSacado):
+                SaldoEmConta -= ValorASerSacado
 
     # 2 -> Deposito (abasteciomento do caixa )
     elif EscolhaDoUsuario == 2:
@@ -39,14 +40,14 @@ while ControleDoMenu:
 
     # 3 -> Consulta dos valores em caixa
     elif EscolhaDoUsuario == 3:
-        print("O valor em caixa é de: ", Caixa01.retornarValorEmCaixa())
+        print("O valor em caixa é de: ", Caixa01.retornarValorEmCaixa(), " reais")
         print("Disposto nas seguintes notas")
         Caixa01.mostrarCedulasEmCaixa()
 
     # 4 -> Sair e finalizar o programa
     elif EscolhaDoUsuario == 4:
         print("Você escolheu sair!")
-        ControleMenu = False
+        ControleDoMenu = False
     
     else:
         print("Entrada inválida, selecione 1,2,3 ou 4")

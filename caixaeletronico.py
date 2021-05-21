@@ -2,7 +2,7 @@ class CaixaEletronico:
     # Construtor da classe
     def __init__(self):
         # Criação de um dicionário para armazenar as celulas do sistema e as quantidades das mesmas
-        self.Notas = {10: 0, 20: 0, 50: 0, 100: 0}
+        self.Notas = {10: 5, 20: 1, 50: 0, 100: 0}
 
     # Método para carregar as notas
     def carregarNotas(self, ValorDaNota, QuantidadeDeNotas):
@@ -27,7 +27,8 @@ class CaixaEletronico:
     # Método para sacar as notas
     def sacarNotas(self, ValorASerSacado):
         if ValorASerSacado > self.retornarValorEmCaixa():
-            print("Saque negado! Quantidade insuficiente em caixa")      
+            print("Saque negado! Quantidade insuficiente em caixa")
+            return False     
         else:
             # Criação de uma cópia do dicionário, feito para não interferir com a princípal em certas lógicas
             VetorDeNotas = self.Notas.copy()
@@ -42,17 +43,22 @@ class CaixaEletronico:
                 while VetorDeNotas[ValorDaNota] != 0 and ValorASerSacado > 0:
                     # Invalida o saque no caso das notas não poderem completar a quantia solicitada 
                     if ValorASerSacado - ValorDaNota < 0:
-                        SaqueInvalido = True
-                        break
+                            if ValorDaNota > ValorASerSacado:
+                                break
+                            else:
+                                SaqueInvalido = True
+                                break
                     # Desconta cada nota do valor a ser sacado, faz o desconto na cópia do dicionário
                     ValorASerSacado -= ValorDaNota 
                     VetorDeNotas[ValorDaNota]  = VetorDeNotas[ValorDaNota] - 1
             if SaqueInvalido:
                 print("Saque negado! Notas não permitem completar a quantia solicitada")
+                return False
             else:
                 # Caso o saque seja válido, mostra as notas utilizadas 
-                print("Saque de", CopiaDeValorASerSacado, "aprovado\nAs notas ejetadas foram:")
+                print("Saque de", CopiaDeValorASerSacado, "reais aprovado\nAs notas ejetadas foram:")
                 for ValorDaNota in self.Notas:
-                    print(self.Notas[ValorDaNota] - VetorDeNotas[ValorDaNota], "notas de", ValorDaNota)
+                    print(self.Notas[ValorDaNota] - VetorDeNotas[ValorDaNota], "nota(s) de", ValorDaNota)
                 # Transfere os valores da cópia para o dicionário original 
                 self.Notas = VetorDeNotas
+                return True
