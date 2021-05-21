@@ -24,7 +24,7 @@ while ControleDoMenu:
 
     # 1 -> Saque (verificação do saldo em conta e saque)
     if EscolhaDoUsuario == 1:
-        print("Você escolheu efetuar um saque")
+        print("Você escolheu efetuar um saque, seu saldo é de", SaldoEmConta, "reais")
         ValorASerSacado = int(input("Quanto você gostaria de sacar? "))
         # Verifica se o usuário possúi o valor a ser sacado na connta 
         if ValorASerSacado>SaldoEmConta:
@@ -32,6 +32,7 @@ while ControleDoMenu:
         else:
             if Caixa01.sacarNotas(ValorASerSacado):
                 SaldoEmConta -= ValorASerSacado
+                print("Seu novo saldo é de:", SaldoEmConta, "reais")
 
     # 2 -> Deposito (abasteciomento do caixa )
     elif EscolhaDoUsuario == 2:

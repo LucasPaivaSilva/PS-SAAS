@@ -2,7 +2,7 @@ class CaixaEletronico:
     # Construtor da classe
     def __init__(self):
         # Criação de um dicionário para armazenar as celulas do sistema e as quantidades das mesmas
-        self.Notas = {10: 5, 20: 1, 50: 0, 100: 0}
+        self.Notas = {10: 0, 20: 0, 50: 0, 100: 0}
 
     # Método para carregar as notas
     def carregarNotas(self, ValorDaNota, QuantidadeDeNotas):
@@ -46,7 +46,7 @@ class CaixaEletronico:
                 while VetorDeNotas[ValorDaNota] != 0 and ValorASerSacado > 0:
                     # Passa para próxima nota ou invalida o saque no caso das notas não poderem completar a quantia solicitada 
                     if ValorASerSacado - ValorDaNota < 0:
-                            if ValorDaNota > ValorASerSacado:
+                            if ValorASerSacado%ValorDaNota !=0:
                                 break
                             else:
                                 SaqueInvalido = True
