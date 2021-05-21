@@ -10,7 +10,7 @@ O código atua como um subsistema responsável por contabilizar e liberar as not
 - Informação das notas a serem liberadas em um saque válido 
 
 ## Loop de Distribuição/Saque
-A distribuição das notas começa com as notas mais altas, uma das razões sendo a priorização das notas "menores" pois essas tem maior demanda e saída.\ 
+A distribuição das notas começa com as notas mais altas, uma das razões sendo a priorização das notas "menores" pois essas tem maior demanda e saída.\n
 Outro ponto que é verificado, antes do trecho de código abaixo, é se o resto da divisão por 10 do valor a ser sacado é diferente de 0, pois caso seja, não é possível distribuir o dinheiro com as notas utilizadas 
 ```python
   for ValorDaNota in reversed(VetorDeNotas):
