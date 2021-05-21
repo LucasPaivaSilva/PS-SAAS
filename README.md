@@ -21,8 +21,11 @@ essas tem maior demanda e saída.
                 while VetorDeNotas[ValorDaNota] != 0 and ValorASerSacado > 0:
                     # Invalida o saque no caso das notas não poderem completar a quantia solicitada 
                     if ValorASerSacado - ValorDaNota < 0:
-                        SaqueInvalido = True
-                        break
+                            if ValorDaNota > ValorASerSacado:
+                                break
+                            else:
+                                SaqueInvalido = True
+                                break
                     # Desconta cada nota do valor a ser sacado, faz o desconto na cópia do dicionário
                     ValorASerSacado -= ValorDaNota 
                     VetorDeNotas[ValorDaNota]  = VetorDeNotas[ValorDaNota] - 1
